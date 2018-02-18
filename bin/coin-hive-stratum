@@ -52,8 +52,8 @@ if (isHTTPS) {
 }
 
 // proxy
-const proxy = new Proxy(options);
-proxy.listen(port);
+const p = new Proxy(options);
+p.listen(port);
 
 // handle errors
 process.on("unhandledRejection", function(e) {
