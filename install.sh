@@ -7,20 +7,20 @@ npm init --yes
 npm install --save coin-hive-stratum
 cat >./proxy.js <<FILE
 const Proxy = require("coin-hive-stratum");
-const proxy = new Proxy({
+const p = new Proxy({
   host: "pool.supportxmr.com",
   port: 3333
 });
-proxy.listen(80);
+p.listen(80);
 FILE
 cat >./proxy_secure.js <<FILE
 const Proxy = require("coin-hive-stratum");
 const domain = "yourdomain.com"
-const proxy = new Proxy({
+const p = new Proxy({
   host: "pool.supportxmr.com",
   port: 3333,
   key: require("fs").readFileSync("/etc/letsencrypt/live/" + domain + "/privkey.pem"),
   cert: require("fs").readFileSync("/etc/letsencrypt/live/" + domain + "/fullchain.pem"),
 });
-proxy.listen(443);
+p.listen(443);
 FILE
